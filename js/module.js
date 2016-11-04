@@ -47,11 +47,18 @@ var state = ( function () {
             privateZip = zip;
         }
         function publicZipFunction() {
-            publicPassZip();
+            isValidZip() ? handleValidZip() : render.feedbackModal("Zip is Invalid", "Please re-enter the zip code in the correct format.", "Re-enter Zip" );
         }
-        function publicPassZip() {
-            var getsZip = $('#user-zip').val();
-            privateSetZip(getsZip);
+        function isValidZip() {
+            var sZip = $('#user-zip').val();
+            var testRegex = /^\d{5}(-\d{4})?$/.test(sZip);
+            return testRegex;
+        }
+        function handleValidZip( ) {
+            privateSetZip($('#user-zip').val());
+            $('.homepage').empty();
+            state.startCount();
+            render.quizView( state.count() );
         }
         function publicGetZip(){
           return privateZip;
