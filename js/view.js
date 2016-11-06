@@ -97,9 +97,9 @@ var render = {
 				resultElement += '<p>Right now, no hobby groups for ' + model.categories[mbti][1] + ' are set up in your area.</p>';
 			} else {
 				for (var i = 0; i < data.results.length; i++) {
-					resultElement += '<h3>' + data.results[i].group.name + '</h3>';
+					resultElement += '<h3 class="description-titles">' + data.results[i].group.name + '</h3>';
 					resultElement += '<div class="results-descriptions">' + data.results[i].description + '</div>';
-					resultElement += '<p><a target="_blank" href="'+ data.results[i].event_url +'">Click Here</a> to to this event&#039;s page</p>'
+					resultElement += '<p class="result-link"><a target="_blank" href="'+ data.results[i].event_url +'">Click Here</a> to to this event&#039;s page</p>'
 					resultElement += '<hr>';
 				}
 			}
