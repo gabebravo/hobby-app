@@ -98,8 +98,10 @@ var render = {
 			} else {
 				for (var i = 0; i < data.results.length; i++) {
 					resultElement += '<h3 class="description-titles">' + data.results[i].group.name + '</h3>';
-					resultElement += '<div class="results-descriptions">' + data.results[i].description + '</div>';
-					resultElement += '<p class="result-link"><a target="_blank" href="'+ data.results[i].event_url +'">Click Here</a> to to this event&#039;s page</p>'
+					if ( data.results[i].description !== undefined ) {
+						resultElement += '<div class="results-descriptions">' + data.results[i].description + '</div>';
+					}
+					resultElement += '<p class="result-link"><a target="_blank" href="'+ data.results[i].event_url +'">Click Here</a> to to this event&#039;s page</p>';
 					resultElement += '<hr>';
 				}
 			}
@@ -112,7 +114,7 @@ var render = {
 			e.preventDefault();
 			app.resetApp();
 		});
-	}, 
+	},
 
 	feedbackModal: function (title, bodyText, btnText ) {
 			var modalHtml = '';
